@@ -90,6 +90,13 @@ class MaliProfiler : public GpuProfiler
 	    GpuCounter::ExternalMemoryWriteStalls,
 	    GpuCounter::ExternalMemoryReadBytes,
 	    GpuCounter::ExternalMemoryWriteBytes,
+	    GpuCounter::ShaderFragmentCycles,
+	    GpuCounter::ShaderComputeCycles,
+	    GpuCounter::ShaderTripipeCycles,
+	    GpuCounter::CulledPrimitives,
+	    GpuCounter::ClippedPrimitives,
+	    GpuCounter::VisiblePrimitives,
+	    GpuCounter::InputPrimitives,
 	};
 
 	typedef std::function<double(void)>                             MaliValueGetter;

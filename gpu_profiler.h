@@ -68,6 +68,15 @@ enum class GpuCounter
 	ExternalMemoryReadBytes,
 	ExternalMemoryWriteBytes,
 
+    ShaderFragmentCycles,
+    ShaderComputeCycles,
+    ShaderTripipeCycles,
+
+    CulledPrimitives,
+    ClippedPrimitives,
+    VisiblePrimitives,
+    InputPrimitives,
+
 	MaxValue
 };
 
@@ -105,6 +114,15 @@ const std::unordered_map<std::string, GpuCounter> gpu_counter_names{
     {"ExternalMemoryWriteStalls", GpuCounter::ExternalMemoryWriteStalls},
     {"ExternalMemoryReadBytes", GpuCounter::ExternalMemoryReadBytes},
     {"ExternalMemoryWriteBytes", GpuCounter::ExternalMemoryWriteBytes},
+
+    {"ShaderFragmentCycles", GpuCounter::ShaderFragmentCycles},
+    {"ShaderComputeCycles", GpuCounter::ShaderComputeCycles},
+    {"ShaderTripipeCycles", GpuCounter::ShaderTripipeCycles},
+
+    {"CulledPrimitives", GpuCounter::CulledPrimitives},
+    {"ClippedPrimitives", GpuCounter::ClippedPrimitives},
+    {"VisiblePrimitives", GpuCounter::VisiblePrimitives},
+    {"InputPrimitives", GpuCounter::InputPrimitives},
 };
 
 // A hash function for GpuCounter values
@@ -157,6 +175,15 @@ const std::unordered_map<GpuCounter, GpuCounterInfo, GpuCounterHash> gpu_counter
     {GpuCounter::ExternalMemoryWriteStalls, {"Stalls when writing to external memory", "stalls"}},
     {GpuCounter::ExternalMemoryReadBytes, {"Bytes read to external memory", "B"}},
     {GpuCounter::ExternalMemoryWriteBytes, {"Bytes written to external memory", "B"}},
+
+    {GpuCounter::ShaderFragmentCycles, {"Shader fragment cycles", "cycles"}},
+    {GpuCounter::ShaderComputeCycles, {"Shader compute cycles", "cycles"}},
+    {GpuCounter::ShaderTripipeCycles, {"Shader tri-pipe cycles", "cycles"}},
+
+    {GpuCounter::CulledPrimitives, {"Number of culled primitives", "primitives"}},
+    {GpuCounter::ClippedPrimitives, {"Number of clipped primitives", "primitives"}},
+    {GpuCounter::VisiblePrimitives, {"Number of visible primitives", "primitives"}},
+    {GpuCounter::InputPrimitives, {"Number of input primitives", "primitives"}},
 };
 
 typedef std::unordered_set<GpuCounter, GpuCounterHash>        GpuCounterSet;

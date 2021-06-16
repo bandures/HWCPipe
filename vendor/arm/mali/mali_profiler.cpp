@@ -256,6 +256,15 @@ MaliProfiler::MaliProfiler(const GpuCounterSet &enabled_counters) :
 	    {GpuCounter::ExternalMemoryWriteStalls, [this] { return get_counter_value(MALI_NAME_BLOCK_MMU, "L2_EXT_W_STALL"); }},
 	    {GpuCounter::ExternalMemoryReadBytes, [this] { return get_counter_value(MALI_NAME_BLOCK_MMU, "L2_EXT_READ_BEATS") * 16; }},
 	    {GpuCounter::ExternalMemoryWriteBytes, [this] { return get_counter_value(MALI_NAME_BLOCK_MMU, "L2_EXT_WRITE_BEATS") * 16; }},
+
+	    {GpuCounter::ShaderFragmentCycles, [this] { return get_counter_value(MALI_NAME_BLOCK_SHADER, "FRAG_ACTIVE"); }},
+	    {GpuCounter::ShaderComputeCycles, [this] { return get_counter_value(MALI_NAME_BLOCK_SHADER, "COMPUTE_ACTIVE"); }},
+	    {GpuCounter::ShaderTripipeCycles, [this] { return get_counter_value(MALI_NAME_BLOCK_SHADER, "TRIPIPE_ACTIVE"); }},
+
+	    {GpuCounter::CulledPrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "PRIM_CULLED"); }},
+	    {GpuCounter::ClippedPrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "PRIM_CLIPPED"); }},
+	    {GpuCounter::VisiblePrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "PRIM_VISIBLE"); }},
+	    {GpuCounter::InputPrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "TRIANGLES"); }},
 	};
 
 	const std::unordered_map<GpuCounter, MaliValueGetter, GpuCounterHash> bifrost_mappings = {
@@ -291,6 +300,15 @@ MaliProfiler::MaliProfiler(const GpuCounterSet &enabled_counters) :
 	    {GpuCounter::ExternalMemoryWriteStalls, [this] { return get_counter_value(MALI_NAME_BLOCK_MMU, "L2_EXT_W_STALL"); }},
 	    {GpuCounter::ExternalMemoryReadBytes, [this] { return get_counter_value(MALI_NAME_BLOCK_MMU, "L2_EXT_READ_BEATS") * 16; }},
 	    {GpuCounter::ExternalMemoryWriteBytes, [this] { return get_counter_value(MALI_NAME_BLOCK_MMU, "L2_EXT_WRITE_BEATS") * 16; }},
+
+	    {GpuCounter::ShaderFragmentCycles, [this] { return get_counter_value(MALI_NAME_BLOCK_SHADER, "FRAG_ACTIVE"); }},
+	    {GpuCounter::ShaderComputeCycles, [this] { return get_counter_value(MALI_NAME_BLOCK_SHADER, "COMPUTE_ACTIVE"); }},
+	    {GpuCounter::ShaderTripipeCycles, [this] { return get_counter_value(MALI_NAME_BLOCK_SHADER, "TRIPIPE_ACTIVE"); }},
+
+	    {GpuCounter::CulledPrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "PRIM_CULLED"); }},
+	    {GpuCounter::ClippedPrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "PRIM_CLIPPED"); }},
+	    {GpuCounter::VisiblePrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "PRIM_VISIBLE"); }},
+	    {GpuCounter::InputPrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "TRIANGLES"); }},
 	};
 
 	const std::unordered_map<GpuCounter, MaliValueGetter, GpuCounterHash> midgard_mappings = {
@@ -317,6 +335,15 @@ MaliProfiler::MaliProfiler(const GpuCounterSet &enabled_counters) :
 	    {GpuCounter::ExternalMemoryWriteStalls, [this] { return get_counter_value(MALI_NAME_BLOCK_MMU, "L2_EXT_W_STALL"); }},
 	    {GpuCounter::ExternalMemoryReadBytes, [this] { return get_counter_value(MALI_NAME_BLOCK_MMU, "L2_EXT_READ_BEATS") * 16; }},
 	    {GpuCounter::ExternalMemoryWriteBytes, [this] { return get_counter_value(MALI_NAME_BLOCK_MMU, "L2_EXT_WRITE_BEATS") * 16; }},
+
+	    {GpuCounter::ShaderFragmentCycles, [this] { return get_counter_value(MALI_NAME_BLOCK_SHADER, "FRAG_ACTIVE"); }},
+	    {GpuCounter::ShaderComputeCycles, [this] { return get_counter_value(MALI_NAME_BLOCK_SHADER, "COMPUTE_ACTIVE"); }},
+	    {GpuCounter::ShaderTripipeCycles, [this] { return get_counter_value(MALI_NAME_BLOCK_SHADER, "TRIPIPE_ACTIVE"); }},
+
+	    {GpuCounter::CulledPrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "PRIM_CULLED"); }},
+	    {GpuCounter::ClippedPrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "PRIM_CLIPPED"); }},
+	    {GpuCounter::VisiblePrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "PRIM_VISIBLE"); }},
+	    {GpuCounter::InputPrimitives, [this] { return get_counter_value(MALI_NAME_BLOCK_TILER, "TRIANGLES"); }},
 	};
 
 	auto product = std::find_if(std::begin(mali_userspace::products), std::end(mali_userspace::products), [&](const mali_userspace::CounterMapping &cm) {
